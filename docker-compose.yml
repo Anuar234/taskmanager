@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  taskmanager:
+    build: .
+    ports:
+      - "50051:50051"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+  mongodb:
+    image: mongo:6.0
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
