@@ -11,9 +11,12 @@ services:
       - MONGO_URI=mongodb://mongodb:27017
   mongodb:
     image: mongo:6.0
-    restart: always
+    container_name: mongodb
+    ports:
+      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    restart: always
 
 volumes:
   mongo-data:
